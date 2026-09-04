@@ -13,6 +13,11 @@ cask "wechat-unrevoke" do
 
   app "Unrevoke.app"
 
+  zap trash: [
+    "~/Library/Caches/io.github.zengtianli.unrevoke",
+    "~/Library/Preferences/io.github.zengtianli.unrevoke.plist",
+  ]
+
   # adhoc 签名，Gatekeeper 默认不放行。Homebrew 6 已经拿掉了 --no-quarantine
   # （实测 `brew install --cask --no-quarantine` 报 invalid option），
   # 所以只能装完手动摘隔离属性 —— caveats 里写的就是这条。
@@ -27,9 +32,4 @@ cask "wechat-unrevoke" do
     No Apple Developer ID signature or notarisation, so Gatekeeper blocks it by
     default. Run the xattr line above once after installing.
   EOS
-
-  zap trash: [
-    "~/Library/Caches/io.github.zengtianli.unrevoke",
-    "~/Library/Preferences/io.github.zengtianli.unrevoke.plist",
-  ]
 end
