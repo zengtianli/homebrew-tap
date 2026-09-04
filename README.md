@@ -31,7 +31,7 @@ brew uninstall sunnyyoung/tap/wechattweak || brew uninstall wechattweak
 | Package | Kind | Source | License |
 |---|---|---|---|
 | [`wechat-unrevoke`](Casks/wechat-unrevoke.rb) | Cask (app) | [zengtianli/WeChatUnrevoke](https://github.com/zengtianli/WeChatUnrevoke) | AGPL-3.0 |
-| [`wechattweak`](Formula/wechattweak.rb) | Formula (built from source) | [zengtianli/WeChatTweak](https://github.com/zengtianli/WeChatTweak) | AGPL-3.0 |
+| [`wechattweak`](Formula/wechattweak.rb) | Formula (prebuilt universal binary) | [zengtianli/WeChatTweak](https://github.com/zengtianli/WeChatTweak) | AGPL-3.0 |
 
 The `xattr` line is needed because the app is ad-hoc signed, not notarised with an Apple
 Developer ID — and Homebrew 6 removed `--no-quarantine`, so a cask install always
