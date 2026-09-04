@@ -1,21 +1,22 @@
 class Wechattweak < Formula
   desc "Patch macOS WeChat to keep recalled messages (WeChat 4.x supported)"
   homepage "https://github.com/zengtianli/WeChatTweak"
-  url "https://github.com/zengtianli/WeChatTweak/archive/refs/tags/2.1.0.tar.gz"
-  sha256 "2cf02b50200857f37b564a0fb1059032024df4f70f833f2680ff56d153eb25d2"
+  url "https://github.com/zengtianli/WeChatTweak/releases/download/2.1.0/wechattweak-2.1.0-macos-universal.tar.gz"
+  sha256 "7b3d3f0e3511d9f2e48d1239a30b20c957faae822845b442ce47064e5ee5dbb9"
   license "AGPL-3.0-only"
-  head "https://github.com/zengtianli/WeChatTweak.git", branch: "master"
 
-  depends_on xcode: ["16.0", :build]
-  depends_on :macos
+  # 装预编译的 universal 二进制，不从源码编。
+  # 源码编要 Xcode（swift-tools-version 6.0），为了一个 CLI 让人先装 15G 的 Xcode
+  # 不合理；而且 Homebrew 在 CLT 版本落后于 Xcode 时会直接拒绝源码编译
+  # （本机 2026-09-04 实测："Your Command Line Tools are too outdated"）。
+  # 自己编：git clone 后 swift build -c release --arch arm64 --arch x86_64
   depends_on macos: :monterey
 
   def install
-    system "swift", "build", "--disable-sandbox", "-c", "release"
-    bin.install ".build/release/wechattweak"
+    bin.install "wechattweak"
   end
 
-  # 刻意**不**把 config.json 装进 prefix。
+  # 刻意**不**装 config.json。
   # 引擎解析 config 的顺序是「当前目录 → 可执行文件往上找 8 层 → fork 的 master
   # config.json」。装了本地副本就会命中第二步，于是补丁库被冻结在发布那一刻，
   # 微信出新 build 必须等 formula 升级。不装 → 落到远端，新 build 一收录就能用。
@@ -31,7 +32,8 @@ class Wechattweak < Formula
       不用升级这个 formula。
 
       不想开终端 → 图形界面：
-        brew install --cask --no-quarantine zengtianli/tap/unrevoke
+        brew install --cask zengtianli/tap/wechat-unrevoke
+        xattr -dr com.apple.quarantine /Applications/Unrevoke.app
     EOS
   end
 

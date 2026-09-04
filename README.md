@@ -13,7 +13,8 @@ These two packages are the 4.x continuation.
 
 ```bash
 # GUI — one button, re-applies the patch after WeChat updates itself
-brew install --cask --no-quarantine zengtianli/tap/unrevoke
+brew install --cask zengtianli/tap/wechat-unrevoke
+xattr -dr com.apple.quarantine /Applications/Unrevoke.app
 
 # CLI — the engine the GUI drives
 brew install zengtianli/tap/wechattweak
@@ -29,11 +30,12 @@ brew uninstall sunnyyoung/tap/wechattweak || brew uninstall wechattweak
 
 | Package | Kind | Source | License |
 |---|---|---|---|
-| [`unrevoke`](Casks/unrevoke.rb) | Cask (app) | [zengtianli/Unrevoke](https://github.com/zengtianli/Unrevoke) | AGPL-3.0 |
+| [`wechat-unrevoke`](Casks/wechat-unrevoke.rb) | Cask (app) | [zengtianli/WeChatUnrevoke](https://github.com/zengtianli/WeChatUnrevoke) | AGPL-3.0 |
 | [`wechattweak`](Formula/wechattweak.rb) | Formula (built from source) | [zengtianli/WeChatTweak](https://github.com/zengtianli/WeChatTweak) | AGPL-3.0 |
 
-`--no-quarantine` is needed because the app is ad-hoc signed, not notarised with an
-Apple Developer ID. You can also build it yourself — it is about a thousand lines of Swift.
+The `xattr` line is needed because the app is ad-hoc signed, not notarised with an Apple
+Developer ID — and Homebrew 6 removed `--no-quarantine`, so a cask install always
+quarantines. You can also build it yourself — it is about a thousand lines of Swift.
 
 The patch library (`config.json`) is fetched at runtime from the fork's `master`, so a
 newly-supported WeChat build works without upgrading either package.
@@ -48,7 +50,8 @@ newly-supported WeChat build works without upgrading either package.
 
 ```bash
 # 图形界面 —— 一个按钮，微信更新后自己把补丁打回去
-brew install --cask --no-quarantine zengtianli/tap/unrevoke
+brew install --cask zengtianli/tap/wechat-unrevoke
+xattr -dr com.apple.quarantine /Applications/Unrevoke.app
 
 # 命令行 —— 图形界面驱动的就是它
 brew install zengtianli/tap/wechattweak
@@ -60,8 +63,8 @@ brew install zengtianli/tap/wechattweak
 brew uninstall sunnyyoung/tap/wechattweak || brew uninstall wechattweak
 ```
 
-`--no-quarantine` 是因为 app 只做了 adhoc 签名，没有用 Apple 开发者 ID 公证。
-也可以自己编译，一共一千行左右 Swift。
+那行 `xattr` 是因为 app 只做了 adhoc 签名、没有用 Apple 开发者 ID 公证，而 Homebrew 6
+已经拿掉了 `--no-quarantine`，装 cask 一定会被隔离。也可以自己编译，一共一千行左右 Swift。
 
 补丁库（`config.json`）在运行时从 fork 的 `master` 拉，所以微信出新版本被收录后，
 两个包都不用升级。
