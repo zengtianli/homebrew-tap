@@ -1,17 +1,16 @@
 cask "wechat-unrevoke" do
-  version "1.0.2"
-  sha256 "71020ca29c0b0fdc7e3b8daed8931f36573261f0c7ac94656a878491b2630651"
+  version "1.0.3"
+  sha256 "ffa9a0aba790fc9f13eee5f6d899225b1353e9484dd9246b0dacfa9d6a5bfac6"
 
-  url "https://github.com/zengtianli/WeChatUnrevoke/releases/download/v#{version}/Unrevoke-#{version}.zip",
+  url "https://github.com/zengtianli/WeChatUnrevoke/releases/download/v#{version}/WeChatUnrevoke-#{version}.zip",
       verified: "github.com/zengtianli/WeChatUnrevoke/"
-  name "Unrevoke"
   name "WeChatUnrevoke"
-  desc "Keep recalled WeChat messages, and stop WeChat's updater from undoing it"
+  desc "Native app to manage WeChat anti-recall patches"
   homepage "https://github.com/zengtianli/WeChatUnrevoke"
 
   depends_on macos: :sequoia
 
-  app "Unrevoke.app"
+  app "WeChatUnrevoke.app"
 
   zap trash: [
     "~/Library/Caches/io.github.zengtianli.unrevoke",
@@ -24,9 +23,9 @@ cask "wechat-unrevoke" do
   caveats <<~EOS
     没有 Apple 开发者签名和公证，macOS 默认不让打开。装完跑一次：
 
-      xattr -dr com.apple.quarantine /Applications/Unrevoke.app
+      xattr -dr com.apple.quarantine /Applications/WeChatUnrevoke.app
 
-    Unrevoke 改的是 /Applications/WeChat.app，打补丁那一步会要管理员密码。
+    WeChatUnrevoke 修改的是 /Applications/WeChat.app，需要时会请求管理员密码。
     命令行版：brew install zengtianli/tap/wechattweak
 
     No Apple Developer ID signature or notarisation, so Gatekeeper blocks it by
