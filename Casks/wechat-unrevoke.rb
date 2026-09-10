@@ -1,6 +1,6 @@
 cask "wechat-unrevoke" do
-  version "1.0.1"
-  sha256 "6e212127c9a6e4a9956cf88a68a4be0ab54e33353467fe3d89030a02edcba60b"
+  version "1.0.2"
+  sha256 "71020ca29c0b0fdc7e3b8daed8931f36573261f0c7ac94656a878491b2630651"
 
   url "https://github.com/zengtianli/WeChatUnrevoke/releases/download/v#{version}/Unrevoke-#{version}.zip",
       verified: "github.com/zengtianli/WeChatUnrevoke/"
