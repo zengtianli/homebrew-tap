@@ -1,14 +1,14 @@
 # homebrew-tap
 
-**中文** | [English](README_EN.md)
+[中文](README.md) | **English**
 
-macOS 微信两件套的 Homebrew tap。
+Homebrew tap for a pair of macOS WeChat tools.
 
 
 
-上游 [`sunnyyoung/WeChatTweak`](https://github.com/sunnyyoung/WeChatTweak)（13.8k★）
-停在 2026-02-08，只覆盖到微信 3.8.x。微信 4.x 把撤回逻辑搬进了 `wechat.dylib`，
-老补丁点全部失效。这两个包是 4.x 的续。
+Upstream [`sunnyyoung/WeChatTweak`](https://github.com/sunnyyoung/WeChatTweak) (13.8k★)
+stopped at 2026-02-08 and covers only WeChat 3.8.x. WeChat 4.x moved message-revoke logic into `wechat.dylib`,
+invalidating every old patch point. These two packages continue support for 4.x.
 
 ```bash
 # 图形界面 —— 一个按钮，微信更新后自己把补丁打回去
@@ -19,17 +19,17 @@ xattr -dr com.apple.quarantine /Applications/Unrevoke.app
 brew install zengtianli/tap/wechattweak
 ```
 
-装过别家同名包要先卸（二进制名一样，会冲突）：
+Uninstall a same-named package from another tap first, because the binary names conflict:
 
 ```bash
 brew uninstall sunnyyoung/tap/wechattweak || brew uninstall wechattweak
 ```
 
-那行 `xattr` 是因为 app 只做了 adhoc 签名、没有用 Apple 开发者 ID 公证，而 Homebrew 6
-已经拿掉了 `--no-quarantine`，装 cask 一定会被隔离。也可以自己编译，一共一千行左右 Swift。
+The `xattr` line is needed because the app is ad-hoc signed and not notarized with an Apple Developer ID. Homebrew 6
+removed `--no-quarantine`, so cask installations are always quarantined. You can also compile it yourself: roughly a thousand lines of Swift.
 
-补丁库（`config.json`）在运行时从 fork 的 `master` 拉，所以微信出新版本被收录后，
-两个包都不用升级。
+The patch library (`config.json`) is fetched from the fork’s `master` at runtime. Once support for a new WeChat version is added,
+neither package needs an upgrade.
 
 ---
 
