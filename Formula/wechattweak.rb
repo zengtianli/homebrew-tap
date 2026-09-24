@@ -1,8 +1,8 @@
 class Wechattweak < Formula
   desc "Patch macOS WeChat to keep recalled messages (WeChat 4.x supported)"
   homepage "https://github.com/zengtianli/WeChatTweak"
-  url "https://github.com/zengtianli/WeChatTweak/releases/download/2.1.0/wechattweak-2.1.0-macos-universal.tar.gz"
-  sha256 "7b3d3f0e3511d9f2e48d1239a30b20c957faae822845b442ce47064e5ee5dbb9"
+  url "https://github.com/zengtianli/WeChatTweak/releases/download/2.2.0/wechattweak-2.2.0-macos-universal.tar.gz"
+  sha256 "5bed818ae7d8fd9f9437100c459903149a7753a9c1727d06e9841c2be3f7a1ef"
   license "AGPL-3.0-only"
 
   # 装预编译的 universal 二进制，不从源码编。
