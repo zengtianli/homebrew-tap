@@ -1,6 +1,6 @@
 cask "wechat-unrevoke" do
-  version "1.0.11"
-  sha256 "f3d0a9a2de3a2f91cc40edeaff59a4815cd871a920aaa3b425a27b710e7a20db"
+  version "1.0.12"
+  sha256 "644c8e0cc1cf4e7a85a83100c9b4fa3870fb30f8d4c0c56e9aa43d49aeb49b96"
 
   url "https://github.com/zengtianli/WeChatUnrevoke/releases/download/v#{version}/WeChatUnrevoke-#{version}.zip",
       verified: "github.com/zengtianli/WeChatUnrevoke/"
@@ -8,7 +8,7 @@ cask "wechat-unrevoke" do
   desc "Native app to manage WeChat anti-recall patches"
   homepage "https://github.com/zengtianli/WeChatUnrevoke"
 
-  depends_on macos: :sequoia
+  depends_on macos: ">= :ventura"
 
   app "WeChatUnrevoke.app"
 
