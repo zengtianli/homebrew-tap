@@ -1,8 +1,8 @@
 class Wechattweak < Formula
   desc "Patch macOS WeChat to keep recalled messages (WeChat 4.x supported)"
   homepage "https://github.com/zengtianli/WeChatTweak"
-  url "https://github.com/zengtianli/WeChatTweak/releases/download/2.3.1/wechattweak-2.3.1-macos-universal.tar.gz"
-  sha256 "d6669b107f3b19238832da602425b35d6385b5d279f23989827a8f290c0099db"
+  url "https://github.com/zengtianli/WeChatTweak/releases/download/2.3.2/wechattweak-2.3.2-macos-universal.tar.gz"
+  sha256 "b4b7bd51876274b82fa5ffa7be91ae35ad7b34a643077a91e5d42f096378cda8"
   license "AGPL-3.0-only"
 
   # 装预编译的 universal 二进制，不从源码编。
@@ -33,7 +33,7 @@ class Wechattweak < Formula
 
       不想开终端 → 图形界面：
         brew install --cask zengtianli/tap/wechat-unrevoke
-        xattr -dr com.apple.quarantine /Applications/Unrevoke.app
+        xattr -dr com.apple.quarantine /Applications/WeChatUnrevoke.app
     EOS
   end
 
