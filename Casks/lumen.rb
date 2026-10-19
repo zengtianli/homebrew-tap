@@ -1,8 +1,8 @@
 cask "lumen" do
-  version "1.1.0,22"
-  sha256 "6c40b2291bb5127df01ba88c5aad384ef1b5820e0d83ad6fd58fb6807ae4ad20"
+  version "1.1.0,23"
+  sha256 "c1c6de9757e81d61dc0095a9402ecfe3c9f93135b12cd9c2e6ee6d9f95347524"
 
-  url "https://github.com/zengtianli/homebrew-tap/releases/download/lumen-v1.1.0/Lumen-1.1.0-22.dmg"
+  url "https://github.com/zengtianli/homebrew-tap/releases/download/lumen-v1.1.0/Lumen-1.1.0-23.dmg"
   name "Lumen"
   desc "Lumen · 知页"
   homepage "https://app-mac-lumen.tianli.cyou/"
